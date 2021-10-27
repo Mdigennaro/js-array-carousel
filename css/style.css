@@ -6,7 +6,7 @@
 
 .container{
   margin: auto;
-  width: 80%;
+  width: 60%;
   height: 100vh;
   display: flex;
   align-items: center;
@@ -14,13 +14,56 @@
 }
 
 .box{
-  width: 80%;
-  height: 400px;
-  background-color: yellowgreen;
+  width: 100%;
+  display: flex;
+}
+
+.box-items{
+  width: 83%;
+}
+
+.items{
+  display: none;
+}
+
+.items img {
+  width: 100%;
+}
+
+.active{
+  display: block;
 }
 
 .box-scroll{
-  width: 20%;
-  height: 400px;
-  background-color:tomato;
+  display: flex;
+  flex-direction: column;
+  width: 16.8%;
+  position: relative;
+}
+ 
+.box-scroll img{
+  width: 100%;
+}
+
+.arrowup, .arrowdown{
+  position: absolute;
+  background-color: rgba(255, 255, 255, .5);
+  border-radius: 50%;
+  font-size: 15px;
+  padding: 0px 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+}
+
+.arrowdown{
+  bottom: 5%;
+}
+
+.arrowup{
+  top: 5%;
+}
+
+.arrowup:hover, .arrowdown:hover{
+  background-color: white;
 }

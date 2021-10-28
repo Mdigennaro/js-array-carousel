@@ -22,47 +22,81 @@ const text = [
   'Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam,',
 ]
 
-const boxItems = document.querySelector(`.box-items`);
-let contatore = 0;
+const boxItems = document.querySelector('.box-items');
+const boxScroll = document.querySelector('.box-scroll');
 
-for(let i = 0; i < image.length; i++){
+let counter = 0;
 
-  console.log(image[i]);
-   
+
+const imageEl = document.querySelector('.box-items');
+const thumbsEl = document.querySelector('.box-scroll');
+
+for (let i = 0; i < image.length; i++) {
   const items = document.createElement('div');
 
+  const html =
+  `
+  <img src="${image[i]}" alt="">
+  <div class="text">
+    <h2>${title[i]}</h2>
+    <p>${text[i]}</p>
+  </div>
+  `
+  
   items.className = 'items';
+  items.innerHTML = html;
 
-  if (contatore === i) {
-    items.classList.add('active');
-  }
-
-  items.innerHTML = `<img src="${image[i]}" alt="">`;
+  imageEl.append(items);
 
   console.log(items);
 
-  boxItems.append(items);
+  const thumb = document.createElement('div');
+  
+  thumb.innerHTML = 
+  `
+  <img src="${image[i]}" alt="">
+  `
+  thumb.className = 'thumb';
+
+  thumbsEl.append(thumb);
+
+  console.log(thumb);
+
+  if(i === counter) {
+  items.classList.add('active');
+  thumb.classList.add('bordo');
 }
 
-const nulla = document.getElementsByClassName('items');
+}
 
-const giu = document.querySelector('.arrowdown');
-const su = document.querySelector('.arrowup');
+const up = document.querySelector('.arrowup');
+const down = document.querySelector('.arrowdown');
 
-giu.addEventListener('click', function(){
+const itemsCollection = document.getElementsByClassName('items');
+const thumbsCollection = document.getElementsByClassName('thumb');
 
-  nulla[contatore].classList.remove('active');
+up.addEventListener('click',function(){
+  itemsCollection[counter].classList.remove('active');
+  thumbsCollection[counter].classList.remove('bordo');
 
-  contatore++;
-  if (contatore > image.length - 1) contatore = 0;
-  nulla[contatore].classList.add('active');
+  counter--;
+
+  if (counter < 0) counter = image.length - 1;
+  console.log(counter)
+  itemsCollection[counter].classList.add('active');
+  thumbsCollection[counter].classList.add('bordo')
 })
 
-su.addEventListener('click', function(){
+down.addEventListener('click',function(){
+  itemsCollection[counter].classList.remove('active');
+  thumbsCollection[counter].classList.remove('bordo');
 
-  nulla[contatore].classList.remove('active');
+  counter++;
 
-  contatore--;
-  if (contatore < 0) contatore = image.length - 1;
-  nulla[contatore].classList.add('active');
+  if (counter === image.length) counter = 0;
+  console.log(counter)
+  itemsCollection[counter].classList.add('active');
+  thumbsCollection[counter].classList.add('bordo')
 })
+
+

@@ -76,11 +76,11 @@
 }
 
 .arrowdown{
-  bottom: 5%;
+  bottom: 10px;
 }
 
 .arrowup{
-  top: 5%;
+  top: 10px;
 }
 
 .arrowup:hover, .arrowdown:hover{
